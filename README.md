@@ -14,19 +14,24 @@ First things first! Let's start with setting up our environment
 Then let's Yaml! 
 
 2- Yaml file: 
-The lamp stack consists of linus apache mysql and php so we will use the yaml file to configure and operate these packages 
+The lamp stack consists of linux apache mysql and php so we will use the yaml file to configure and operate these packages 
 
 2.1 Hosts:
     - You should add you host name (client servers) or name group.
     - If you don't know the host name/ group name then you'll get them from the inventory(hosts) file 
-    cd /etc/ansible
-    ls 
-    cat hosts
+    
+    # cd /etc/ansible
+    # ls 
+    # cat hosts
+    
 NB: you have to be root user. (errors sparked when i used other users)
 2.2 Tasks 
   2.2.1 install and start servicesthis is equivalent yum install in linux host.
+  
   2.2.2 I used mariadb here beacuse I faced some error with mysql packages. I will discuss the errors I faced later on.
+  
   2.2.3 copy path of php file (in your ansible machine) and add the destination (on host)
+  
   2.2.4 Set up firewall rules to allow traffic on ports 80 and 443 (http and https)
 
 Now we are ready. let's head to the ansible machine and deploy our playbook
@@ -39,7 +44,7 @@ Now we are ready. let's head to the ansible machine and deploy our playbook
    press esc then save it using (:wq!)
 
  3.2 deploy!
-   #ansible-playbook lampstack.yml 
+   # ansible-playbook lampstack.yml 
 
 4- Erros faced: 
   4.1 Calling mysql packages there was a new format but to eradicate errors completely I used mariadb
