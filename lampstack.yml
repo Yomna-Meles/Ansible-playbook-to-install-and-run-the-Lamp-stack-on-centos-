@@ -1,0 +1,42 @@
+ ---
+ - hosts: server1
+   remote_user: root
+   become: yes 
+
+   tasks: 
+    - name: installing lamp stack
+      yum:
+       name:
+        - httpd
+        - mariadb-server
+        - php
+        
+      state: installed 
+    - name: eanbling and starting httpd
+      service:
+       name: httpd
+       enabled: yes
+       state: started
+
+    - name: eanbling and starting mariadb
+      service:
+       name: mariadb
+       enabled: yes
+       state: started
+
+    - name: copying a php file 
+      copy: 
+       src: /root/ansibleplaybook/test.php
+       dest: /var/www/html/index.php
+       force: yes 
+       
+    - name: firewalld rules
+      ansible.posix.firewalld:
+        service: "{{ item }}"
+        state: enabled
+        permanent: true
+        immediate: true
+      with_items:
+        - http
+        - https
+      
