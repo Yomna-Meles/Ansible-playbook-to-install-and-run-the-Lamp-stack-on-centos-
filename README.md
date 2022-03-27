@@ -44,10 +44,13 @@ Now we are ready. let's head to the ansible machine and deploy our playbook
    press esc then save it using (:wq!)
 
  3.2 deploy!
+ 
    # ansible-playbook lampstack.yml 
 
 4- Erros faced: 
+
   4.1 Calling mysql packages there was a new format but to eradicate errors completely I used mariadb
+  
   4.2 An error in finding the php file kept popping up so make sure of the path. Make sure the file is created under root user beacuse this is what we are using here.
 
 We are all done for now!
